@@ -1,6 +1,6 @@
 ﻿namespace Engine
 {
-    partial class FlowWindow
+    partial class Window
     {
         /// <summary>
         ///  Required designer variable.
@@ -35,12 +35,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "FlowWindow";
-            this.Text = "Form1";
-            this.Activated += new System.EventHandler(this.FlowWindow_Activated);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FlowWindow_Paint);
+            this.Name = _app.Title;
+            this.Text = _app.Title;
             this.ResumeLayout(false);
-
         }
 
         #endregion
