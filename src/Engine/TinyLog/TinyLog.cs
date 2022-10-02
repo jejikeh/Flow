@@ -5,9 +5,14 @@ namespace TinyLog
 {
     public static class Log
     {
-        private static string Output(string message, string memberName = "", string sourceFilePath = "", int sourceLineNumber = 0)
+        public static string Output(string message, string memberName = "", string sourceFilePath = "", int sourceLineNumber = 0)
         {
             return $"{sourceLineNumber} line {sourceFilePath}\n[{DateTime.Now.TimeOfDay}][{memberName}]: {message}";
+        }
+        
+        public static string Output<T>(string message, string memberName = "", string sourceFilePath = "", int sourceLineNumber = 0)
+        {
+            return $"[{typeof(T)}]: {message}";
         }
 
         public static void Info(string message,
