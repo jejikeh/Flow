@@ -1,5 +1,4 @@
 ﻿using Engine.Events;
-using SFML.Graphics;
 using TinyLog;
 
 namespace Engine
@@ -7,37 +6,18 @@ namespace Engine
     public abstract class Game
     {
         public Form Window => new Window(this);
-
-        internal Tuple<int, int>? WindowSize { get; set; }
         internal string Title => GetType().Name;
 
-        internal RenderWindow? SfmlRender;
-
-        public void Run() { }
-
-        internal virtual void Init(IntPtr handle)
-        {
-            Log.Info("SFML init...");
-            SfmlRender = Core.Graphics.InitSFML(handle);
-            SetWindowSize(1024, 648);
-
-            
-        }
+        public void Run()
+        { }
 
         public virtual void Start()
         {
             Log.Info("Flow engine started...");
+            var resizeEvent = new KeyPressedEvent(3,2);
+            
+            if(resizeEvent.IsInCategory(EventCategory.Input))
+                Log.Info(resizeEvent.ToString());
         }
-
-        public virtual void Update()
-        {
-
-        }
-
-        public void SetWindowSize(int width, int height) =>
-            WindowSize = new Tuple<int, int>(width, height);
-
-        public void ClearCanvas(SFML.Graphics.Color color) =>
-            Core.Graphics.ClearRender(SfmlRender!, color);
     }
 }

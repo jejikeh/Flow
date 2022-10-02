@@ -1,20 +1,14 @@
-﻿using SFML;
-using SFML.Graphics;
+﻿namespace Engine;
 
-namespace Engine;
-
-internal static class Core
+public class Core
 {
-    internal static class Graphics
+    
+}
+
+internal static class SCore
+{
+    internal static int Bit(int x)
     {
-        internal static RenderWindow InitSFML(IntPtr handle) => new(handle);
-
-        internal static void ClearRender(RenderWindow render, SFML.Graphics.Color color)
-        {
-            render.DispatchEvents();
-            render.Clear(color);
-            render.Display();
-        }
+        return 1 << x;
     }
-
 }
