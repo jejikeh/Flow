@@ -28,10 +28,5 @@ namespace Engine
             Name = _app.Title;
             Text = _app.Title;
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            TinyLog.Log.Warn("HAHA");
-        }
     }
 }

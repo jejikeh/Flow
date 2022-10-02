@@ -7,12 +7,12 @@ namespace Flow
     {
         public override void Start()
         {
-            ClearCanvas(SFML.Graphics.Color.Yellow);
+            ClearCanvas(SFML.Graphics.Color.Black);
         }
 
         public override void Update()
         {
-
+            
         }
     }
 }
