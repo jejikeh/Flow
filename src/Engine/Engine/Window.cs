@@ -24,7 +24,7 @@ namespace Engine
 
         private void SetupForm()
         {
-            ClientSize = new Size(_app.WindowSize.Item1, _app.WindowSize.Item2);
+            ClientSize = new Size(_app.WindowSize!.Item1, _app.WindowSize!.Item2);
             Name = _app.Title;
             Text = _app.Title;
         }
