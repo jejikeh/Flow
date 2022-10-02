@@ -2,15 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Update="FlowWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <ProjectReference Include="..\Engine\Engine\Engine.csproj" />
+    <ProjectReference Include="..\Engine\TinyLog\TinyLog.csproj" />
   </ItemGroup>
 
 </Project>
