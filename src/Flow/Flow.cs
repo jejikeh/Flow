@@ -7,9 +7,12 @@ namespace Flow
     {
         public override void Start()
         {
-            base.Start();
+            ClearCanvas(SFML.Graphics.Color.Yellow);
+        }
 
-            Log.Warn("Empty method!!!");
+        public override void Update()
+        {
+
         }
     }
 }

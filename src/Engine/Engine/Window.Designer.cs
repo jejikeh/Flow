@@ -30,14 +30,17 @@
         {
             this.SuspendLayout();
             // 
-            // FlowWindow
+            // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = _app.Title;
-            this.Text = _app.Title;
+            this.ClientSize = new System.Drawing.Size(1187, 662);
+            this.Name = "Window";
+            this.Text = "Title";
+            this.Load += new System.EventHandler(this.Window_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Window_Paint);
             this.ResumeLayout(false);
+
         }
 
         #endregion
