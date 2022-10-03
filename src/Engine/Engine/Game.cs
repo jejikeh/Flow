@@ -1,4 +1,6 @@
-﻿using Engine.Events;
+﻿using Engine.Config;
+using Engine.Events;
+using Engine.Types;
 using SFML.Graphics;
 using TinyLog;
 
@@ -8,10 +10,10 @@ namespace Engine
     {
         public Form Window => new Window(this);
 
-        internal Tuple<int, int>? WindowSize { get; set; }
-        internal string Title => GetType().Name;
 
         internal RenderWindow? SfmlRender;
+
+        public IConfig Config { get; set; }
 
         public void Run() { }
 
@@ -19,12 +21,19 @@ namespace Engine
         {
             Log.Info("SFML init...");
             SfmlRender = Core.Graphics.InitSFML(handle);
-            SetWindowSize(1024, 648);
 
-
+            OnAwake();
         }
 
-        public virtual void Start()
+        /// <summary>
+        /// Exec right before Load()
+        /// </summary>
+        protected virtual void OnAwake()
+        {
+            Config = new DefaultConfig();
+        }
+
+        public virtual void Load()
         {
             Log.Info("Flow engine started...");
         }
@@ -34,9 +43,10 @@ namespace Engine
 
         }
 
-        public void SetWindowSize(int width, int height) =>
-            WindowSize = new Tuple<int, int>(width, height);
-
+        /// <summary>
+        /// Clear canvas of game window
+        /// </summary>
+        /// <param name="color"></param>
         public void ClearCanvas(SFML.Graphics.Color color) =>
             Core.Graphics.ClearRender(SfmlRender!, color);
     }
