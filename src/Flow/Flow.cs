@@ -12,6 +12,7 @@ namespace Flow
         protected override void OnAwake()
         {
             Config = new Config();   
+            base.OnAwake();
         }
 
         public override void Load()

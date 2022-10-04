@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Engine\TinyLog\TinyLog.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Content" />
+  </ItemGroup>
+
 </Project>

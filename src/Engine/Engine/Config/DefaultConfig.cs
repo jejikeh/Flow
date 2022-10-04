@@ -13,5 +13,7 @@ namespace Engine.Config
 
         public string Title => "Referendum";
         public int RefreshRate => 25;
+        public string PathToContent => "Content";
+        public bool isDebug => true;
     }
 }

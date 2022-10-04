@@ -14,6 +14,7 @@ namespace Engine
         public IConfig Config { get; set; }
         public Input Input { get; set; }
         public Render Render { get; set; }
+        internal ContentLoader ContentLoader { get; set; }
 
 
         public Color VoidColor { get; set; }
@@ -23,12 +24,17 @@ namespace Engine
             Log.Info("SFML init...");
             Render = new Render(handle, this);
             Input = new Input();
+            ContentLoader = new ContentLoader(this);
+            
+            Config = new DefaultConfig();
+            
             OnAwake();
         }
         
         protected virtual void OnAwake()
         {
-            Config = new DefaultConfig();
+            if(Config.isDebug)
+                ContentLoader.InitContent();
         }
 
         public virtual void Load()
