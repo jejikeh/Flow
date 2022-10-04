@@ -1,6 +1,8 @@
 ﻿using Engine;
 using Engine.Types;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
+using SFML.Graphics;
 using TinyLog;
 
 namespace Flow
@@ -18,7 +20,8 @@ namespace Flow
 
         public override void Update()
         {
-            ClearCanvas(SFML.Graphics.Color.Black);
+            base.Update();
+            VoidColor = Input.IsKeyDown(Keys.B) ? Color.Green : Color.Magenta;
         }
     }
 }

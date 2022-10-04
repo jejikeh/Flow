@@ -1,16 +1,12 @@
 ﻿using Engine.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Engine.Config;
 
 namespace Flow
 {
-    public class Config : Engine.IConfig
+    public class Config : DefaultConfig,Engine.IConfig
     {
-        public Vector2d WindowSize => new Vector2d(1024, 648);
+        public new Vector2d WindowSize => new Vector2d(1024, 648);
 
-        public string Title => "Flow";
+        public new string Title => "Flow";
     }
 }

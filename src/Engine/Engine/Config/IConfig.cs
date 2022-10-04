@@ -12,5 +12,6 @@ namespace Engine
     {
         public Vector2d WindowSize { get;}
         public string Title { get; }
+        public int RefreshRate { get; }
     }
 }

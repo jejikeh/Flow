@@ -32,14 +32,15 @@
             // 
             // Window
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 397);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ClientSize = new System.Drawing.Size(1187, 662);
             this.Name = "Window";
             this.Text = "Title";
             this.Load += new System.EventHandler(this.Window_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Window_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Window_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Window_KeyUp);
             this.ResumeLayout(false);
 
         }

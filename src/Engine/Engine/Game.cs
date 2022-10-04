@@ -3,6 +3,7 @@ using Engine.Events;
 using Engine.Types;
 using SFML.Graphics;
 using TinyLog;
+using Color = SFML.Graphics.Color;
 
 namespace Engine
 {
@@ -10,24 +11,21 @@ namespace Engine
     {
         public Form Window => new Window(this);
 
-
-        internal RenderWindow? SfmlRender;
-
         public IConfig Config { get; set; }
+        public Input Input { get; set; }
+        public Render Render { get; set; }
 
-        public void Run() { }
 
-        internal virtual void Init(IntPtr handle)
+        public Color VoidColor { get; set; }
+
+        internal void Init(IntPtr handle)
         {
             Log.Info("SFML init...");
-            SfmlRender = Core.Graphics.InitSFML(handle);
-
+            Render = new Render(handle, this);
+            Input = new Input();
             OnAwake();
         }
-
-        /// <summary>
-        /// Exec right before Load()
-        /// </summary>
+        
         protected virtual void OnAwake()
         {
             Config = new DefaultConfig();
@@ -40,14 +38,27 @@ namespace Engine
 
         public virtual void Update()
         {
-
+            Render.ClearAndDraw();
         }
-
-        /// <summary>
-        /// Clear canvas of game window
-        /// </summary>
-        /// <param name="color"></param>
-        public void ClearCanvas(SFML.Graphics.Color color) =>
-            Core.Graphics.ClearRender(SfmlRender!, color);
+        
+        public virtual void Draw()
+        {
+        }
+        
+        public void OnEvent(Event @event)
+        {
+            Log.Info(@event.ToString());
+            switch (@event.Type)
+            {
+                case EventType.KeyPressed:
+                    KeyEvent keyEvent = @event as KeyEvent;
+                    Input.EventKeyDown(keyEvent.KeyCode);
+                    break;
+                case EventType.KeyReleased:
+                    KeyEvent keyEvent1 = @event as KeyEvent;
+                    Input.EventKeyRelease(keyEvent1.KeyCode);
+                    break;
+            }
+        }
     }
 }

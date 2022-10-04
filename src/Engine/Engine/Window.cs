@@ -1,3 +1,5 @@
+using Engine.Events;
+
 namespace Engine
 {
     public partial class Window : Form
@@ -13,6 +15,7 @@ namespace Engine
 
             InitializeComponent();
             SetupForm();
+
         }
 
         private void Window_Load(object sender, EventArgs e)
@@ -20,9 +23,11 @@ namespace Engine
             _app.Load();
         }
 
-        private void Window_Paint(object sender, PaintEventArgs e)
+        private async void Window_Paint(object sender, PaintEventArgs e)
         {
             _app.Update();
+            await Task.Delay(_app.Config.RefreshRate);
+            Invalidate();
         }
 
         private void SetupForm()
@@ -33,6 +38,16 @@ namespace Engine
 
             MinimumSize = ClientSize;
             MaximumSize = ClientSize;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            _app.OnEvent(new KeyPressedEvent(e.KeyCode));
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            _app.OnEvent(new KeyReleasedEvent(e.KeyCode));
         }
     }
 }

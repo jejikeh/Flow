@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace Engine.Config
 {
-    internal class DefaultConfig : IConfig
+    public class DefaultConfig : IConfig
     {
         public Vector2d WindowSize => new Vector2d(320, 180);
 
         public string Title => "Referendum";
+        public int RefreshRate => 25;
     }
 }

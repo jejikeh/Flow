@@ -7,28 +7,28 @@ public abstract class KeyEvent : Event
         get => EventCategory.Keyboard | EventCategory.Input;
     }
 
-    protected int KeyCode { get; }
+    public Keys KeyCode { get; }
     
-    protected KeyEvent(int keyCode) => KeyCode = keyCode;
+    protected KeyEvent(Keys keyCode) => KeyCode = keyCode;
 }
 
 public class KeyPressedEvent : KeyEvent
 {
     public override EventType Type { get => EventType.KeyPressed; }
-    public int RepeatCount { get; }
 
-    public KeyPressedEvent(int keyCode, int repeatedTimes) : base(keyCode) =>
-        RepeatCount = repeatedTimes;
+    public KeyPressedEvent(Keys keyCode) : base(keyCode)
+    {
+    }
 
     public override string ToString() => 
-        TinyLog.Log.Output<KeyPressedEvent>($"{KeyCode} repeated {RepeatCount}");
+        TinyLog.Log.Output<KeyPressedEvent>($"{KeyCode} is down");
 }
 
 public class KeyReleasedEvent : KeyEvent
 {
     public override EventType Type { get => EventType.KeyReleased; }
 
-    public KeyReleasedEvent(int keyCode) : base(keyCode) { }
+    public KeyReleasedEvent(Keys keyCode) : base(keyCode) { }
 
     public override string ToString() => 
         TinyLog.Log.Output<KeyReleasedEvent>($"{KeyCode} was released");
