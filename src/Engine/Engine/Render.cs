@@ -8,6 +8,11 @@ public class Render
     
     private Game _game;
 
+    public void Draw(GameObject gameObject)
+    {
+        _render.Draw(gameObject);
+    }
+
     internal Render(IntPtr handle, Game game)
     {
         _render = new RenderWindow(handle);

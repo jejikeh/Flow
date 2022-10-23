@@ -1,12 +1,19 @@
+using SFML.Graphics;
+
 namespace Engine;
 
-internal class ContentLoader
+public class ContentLoader
 {
     private Game _game;
 
     public ContentLoader(Game game)
     {
         _game = game;
+    }
+    
+    public static Texture InitTexture(string filePath)
+    {
+        return new Texture("./Content/" + filePath);
     }
 
     public void InitContent()
