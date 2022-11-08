@@ -12,7 +12,7 @@ namespace Engine.Config
         public Vector2d WindowSize => new Vector2d(320, 180);
 
         public string Title => "Referendum";
-        public int RefreshRate => 25;
+        public int RefreshDelay => 25;
         public string PathToContent => "Content";
         public bool isDebug => true;
     }

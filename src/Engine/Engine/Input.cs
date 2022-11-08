@@ -14,6 +14,16 @@ namespace Engine
 
         public bool IsKeyDown(Keys keycode) => _pressedKeys.Contains(keycode);
 
+        public bool IsKeyPressed(Keys keycode)
+        {
+            if (!_pressedKeys.Contains(keycode))
+                return false;
+
+            _pressedKeys.Remove(keycode);
+
+            return true;
+        }
+
         internal void EventKeyDown(Keys keycode)
         {
             if(!_pressedKeys.Contains(keycode))

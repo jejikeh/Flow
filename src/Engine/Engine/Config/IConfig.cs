@@ -12,7 +12,7 @@ namespace Engine
     {
         public Vector2d WindowSize { get;}
         public string Title { get; }
-        public int RefreshRate { get; }
+        public int RefreshDelay { get; }
         public string PathToContent { get; }
 
         public bool isDebug { get; }

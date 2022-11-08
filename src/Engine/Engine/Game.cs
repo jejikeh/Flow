@@ -42,9 +42,10 @@ namespace Engine
             Log.Info("Flow engine started...");
         }
 
-        public virtual void Update()
+        public virtual async Task Update()
         {
             Render.ClearAndDraw();
+            await Task.Delay(1);
         }
         
         public virtual void Draw()

@@ -26,7 +26,7 @@ namespace Engine
         private async void Window_Paint(object sender, PaintEventArgs e)
         {
             _app.Update();
-            await Task.Delay(_app.Config.RefreshRate);
+            await Task.Delay(_app.Config.RefreshDelay);
             Invalidate();
         }
 
@@ -48,6 +48,11 @@ namespace Engine
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             _app.OnEvent(new KeyReleasedEvent(e.KeyCode));
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

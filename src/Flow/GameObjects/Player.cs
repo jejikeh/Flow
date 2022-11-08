@@ -7,7 +7,12 @@ namespace Flow.GameObjects;
 public class Player : GameObject
 {
     private RectangleShape _rectangleShape;
-    private int _spriteSize = 64;
+    private int _spriteSize = 8;
+    private int _updateTickInterval = 4;
+    private int _currentTick = 0;
+
+    private Tuple<int, int> _lastInputDirection;
+
 
     public Player(Vector2f startPosition)
     {
@@ -15,6 +20,8 @@ public class Player : GameObject
         _rectangleShape.FillColor = Color.Yellow;
 
         Position = startPosition;
+        _lastInputDirection = new Tuple<int, int>(0, -1);
+
     }
     
     public override void Draw(RenderTarget target, RenderStates states)
@@ -23,12 +30,26 @@ public class Player : GameObject
         target.Draw(_rectangleShape, states);
     }
 
-    public void Update(Game game)
+    public async Task Update(Game game)
     {
-        if (game.Input.IsKeyDown(Keys.Left))
-            Position += new Vector2f(1, 0);
-        
-        if (game.Input.IsKeyDown(Keys.Right))
-            Position -= new Vector2f(1, 0);
+        _currentTick++;
+
+        if(_currentTick > _updateTickInterval)
+        {
+            Flow.World.MoveObject(this, _lastInputDirection.Item1, _lastInputDirection.Item2);
+            _currentTick = 0;
+        }
+
+        if (game.Input.IsKeyPressed(Keys.Down) || game.Input.IsKeyPressed(Keys.S))
+            _lastInputDirection = new Tuple<int, int>(0, 1);
+
+        if (game.Input.IsKeyPressed(Keys.Left) || game.Input.IsKeyPressed(Keys.A))
+            _lastInputDirection = new Tuple<int, int>(-1, 0);
+
+        if (game.Input.IsKeyPressed(Keys.Right) || game.Input.IsKeyPressed(Keys.D))
+            _lastInputDirection = new Tuple<int, int>(1, 0);
+
+        if (game.Input.IsKeyPressed(Keys.Up) || game.Input.IsKeyPressed(Keys.W))
+            _lastInputDirection = new Tuple<int, int>(0, -1);
     }
 }

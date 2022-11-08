@@ -13,6 +13,7 @@ namespace Flow
     {
         private Bob _bob = new Bob();
         private Player _player = new Player(new Vector2f(50,50));
+        public static CellGrid World = new CellGrid(35, 31, 8);
         
         
         protected override void OnAwake()
@@ -23,14 +24,15 @@ namespace Flow
 
         public override void Load()
         {
+            World.PlaceObjectToGrid(_player, 8,8);
         }
 
-        public override void Update()
+        public override async Task Update()
         {
-            base.Update();
+            await base.Update();
             VoidColor = Input.IsKeyDown(Keys.B) ? Color.Green : Color.Magenta;
-            
-            _player.Update(this);
+
+            await _player.Update(this);
         }
 
         public override void Draw()
