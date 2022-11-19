@@ -4,5 +4,8 @@ namespace Engine;
 
 public abstract class GameObject : Transformable, Drawable
 {
-    public abstract void Draw(RenderTarget target, RenderStates states);
+    public virtual void Draw(RenderTarget target, RenderStates states)
+    {
+        states.Transform *= Transform;
+    }
 }

@@ -36,7 +36,7 @@ public class Player : GameObject
 
         if(_currentTick > _updateTickInterval)
         {
-            Flow.World.MoveObject(this, _lastInputDirection.Item1, _lastInputDirection.Item2);
+            // Flow.World.MoveObject(this, _lastInputDirection.Item1, _lastInputDirection.Item2);
             _currentTick = 0;
         }
 
